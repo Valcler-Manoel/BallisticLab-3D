@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Jogo de Física - Three.js</title>
+    <title>BallisticLab3D</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     width: 20px;
     height: 20px;
     transform: translate(-50%, -50%);
-    pointer-events: none; /* Garante que a mira não intercepte cliques do mouse */
+    pointer-events: none; 
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -22,7 +22,6 @@
     <div style="width: 4px; height: 4px; background-color: red; border-radius: 50%;"></div>
     
     <div style="position: absolute; width: 2px; height: 10px; background-color: lime; top: -12px;"></div> <div style="position: absolute; width: 2px; height: 10px; background-color: lime; bottom: -12px;"></div> <div style="position: absolute; width: 10px; height: 2px; background-color: lime; left: -12px;"></div> <div style="position: absolute; width: 10px; height: 2px; background-color: lime; right: -12px;"></div> </div>
-    <!-- Import Maps ajuda o navegador a entender o Three.js sem precisar de instalação complexa agora -->
     <script type="importmap">
         {
             "imports": {
