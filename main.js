@@ -316,9 +316,6 @@ document.addEventListener('mousemove', (e) => {
     if (document.pointerLockElement === renderer.domElement && cameraTarget === "pistol" && !isFiring) {
         
         pitch -= e.movementY * sensitivity;
-        
-        // ==========================================
-        // A NOVA TRAVA: Exatamente 45 graus (em radianos)
         const limiteRadianosmin = 60 * (Math.PI / 180);
         const limiteRadianosmax = 20 * (Math.PI / 180); // Converte 45° para radianos
         pitch = Math.max(-limiteRadianosmax, Math.min(limiteRadianosmin, pitch));
@@ -346,7 +343,6 @@ window.addEventListener('mousedown', (e) => {
         projectileBody.wakeUp();
         projectileBody.fixedRotation = true; 
 
-        // Offset do seu cano
         const barrelTipOffset = new THREE.Vector3(-2, 13.3, -30); 
         const spawnPosition = barrelTipOffset.clone();
         pistol.localToWorld(spawnPosition); 
@@ -454,7 +450,6 @@ window.forcarResetDaCena = function() {
 // Função para a interface inclinar a arma
 window.atualizarPitchPelaInterface = function(anguloEmGraus) {
     if (!isFiring) { // Só permite mexer se não tiver atirado ainda
-        // Converte os graus do painel (ex: 45) para radianos, que é o que o Three.js usa
         pitch = anguloEmGraus * (Math.PI / 180); 
     }
 };

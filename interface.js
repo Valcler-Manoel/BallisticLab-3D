@@ -47,14 +47,11 @@ export function iniciarInterface(config, world, setCameraModo) {
     
     pastaFisica.add(config, 'v0', 10, 500).name('Velocidade (m/s)').step(1);
     pastaFisica.add(config, 'angle', -20, 60).name('Ângulo (°)').onChange(val => {
-    // Quando você mexe no slider, ele chama a função do main.js
     if (typeof window.atualizarPitchPelaInterface === 'function') {
         window.atualizarPitchPelaInterface(val);
     }
 }).listen();
     pastaFisica.add(config, 'angle', -20, 60).name('Ângulo (°)');
-    
-    // Adicionamos o .onChange na gravidade para atualizar o mundo físico na hora
     pastaFisica.add(config, 'gravity', 0, 20).name('Gravidade (m/s²)').step(0.1).onChange(v => {
         if(world) world.gravity.set(0, -v, 0);
     });
@@ -63,7 +60,7 @@ export function iniciarInterface(config, world, setCameraModo) {
 
     const pastaVisual = gui.addFolder('Visualização');
     
-    // Objeto temporário para as opções que não existem no config dele
+    // Objeto temporário
     const extras = {
         tipoProjetil: 'Bala',
         corRastro: '#ffffff',
@@ -92,12 +89,7 @@ export function iniciarInterface(config, world, setCameraModo) {
         extras.modoCamera = 'FPS';
 
         if(typeof world !== 'undefined' && world) world.gravity.set(0, -9.81, 0);
-        
-        // Se a função setCameraModo existir no seu código, pode manter:
         if(typeof setCameraModo === 'function') setCameraModo('FPS');
-
-        // ==========================================
-        // Chama a ponte que arruma tudo lá no main.js
         if (typeof window.forcarResetDaCena === 'function') {
             window.forcarResetDaCena();
         }
